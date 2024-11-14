@@ -43,10 +43,14 @@ public class Main extends JavaPlugin {
 		/*
 		 * Registers all events
 		 */
+		Bukkit.getPluginManager().registerEvents(new onBossDeath(), this);
+		Bukkit.getPluginManager().registerEvents(new onBossHit(), this);
 		Bukkit.getPluginManager().registerEvents(new onEntityDeath(), this);
 		Bukkit.getPluginManager().registerEvents(new onEntityHit(), this);
+		Bukkit.getPluginManager().registerEvents(new onFinalDamage(), this);
 		Bukkit.getPluginManager().registerEvents(new onItemConsume(), this);
 		Bukkit.getPluginManager().registerEvents(new onMineAmethyst(), this);
+		Bukkit.getPluginManager().registerEvents(new onMineDeepslate(), this);
 		Bukkit.getPluginManager().registerEvents(new onPlayerDeath(), this);
 		Bukkit.getPluginManager().registerEvents(new onPlayerInteract(), this);
 		Bukkit.getPluginManager().registerEvents(new onPlayerJoin(), this);
@@ -64,6 +68,7 @@ public class Main extends JavaPlugin {
 
 			commands.register("boss", "WIP", new Boss());
 			commands.register("reset", "Resets the repair cost of your items", new Reset());
+			commands.register("test", "Test command", new Test());
 			commands.register("skin", "Change the skin of your current weapon", new Skin());
 			commands.register("split", "Splits the enchants on your books", new Split());
 			commands.register("rankup", "Increases your rank", new RankUp());
@@ -96,6 +101,8 @@ public class Main extends JavaPlugin {
 	public void onDisable() {
 		Bukkit.getConsoleSender().sendMessage("Disabling Ourstory...");
 
-		// Save inventory, player state, anything the plugin is manipulating
+		// Stop Exporter server
+
+		// Stops everything the plugin instanciated
 	}
 }
